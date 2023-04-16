@@ -28,6 +28,9 @@ def paint(event):
     y = event.y
     canvas.create_oval((x,y,x+strokeSize.get(),y+strokeSize.get()), fill=color, width=5, outline=color)
 
+def clearAll():
+  canvas.delete("all")
+
 frameLeft = Frame(root, relief=SUNKEN, borderwidth=5, bg="grey")
 frameLeft.pack(side="left", fill=Y)
 frameRight = Frame(root, relief=SUNKEN, borderwidth=5, bg="grey")
@@ -44,6 +47,8 @@ btnRed = Button(frameLeft, text="Red", bg="red", command=partial(changeColor, "r
 btnRed.pack()
 btnYellow = Button(frameLeft, text="Eraser", bg="white", command=partial(changeColor, "white"), width=10)
 btnYellow.pack()
+btnEraseAll = Button(frameLeft, text="EraseAll", bg="white", command=clearAll, width=10)
+btnEraseAll.pack()
 btnChoose = Button(frameLeft, text="Choose Color")
 btnChoose.pack()
 btnChoose.bind("<Button-1>", chooseColor)
